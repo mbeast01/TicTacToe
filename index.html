@@ -11,10 +11,12 @@
         }
 
         div.board {
-            margin: 5px;
+            width: 600px;
+	        height: 600px;
+	        margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(3, 100px); 
-            grid-template-rows: repeat(3, 100px); 
+            grid-template-columns: repeat(3, 200px); 
+            grid-template-rows: repeat(3, 200px); 
     
         }
 
@@ -23,7 +25,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 40px;
+            font-size: 50px;
         }
 
 
@@ -57,7 +59,7 @@
         const NUM_SQUARES = 9;
         for (i = 0; i < NUM_SQUARES; i++){
             id = "sq" + i;
-            document.write("<div class = 'square' id = '" + id + "'></div>");
+            document.write("<div class = 'square' id = '" + id + "'>X</div>");
         }
         document.write("</div>");
     </script>
