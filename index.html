@@ -52,6 +52,7 @@
 
     </style>
     <script language = "javascript">
+
         document.write("<h1>Welcome to Tic Tac Toe! </h1>");
         document.write("<div class='turn'>Someone's Turn</div>");
         document.write("<div class='win'>message goes here</div>");
@@ -62,6 +63,17 @@
             document.write("<div class = 'square' id = '" + id + "'>X</div>");
         }
         document.write("</div>");
+
+	const allsquares = document.querySelectorAll('.square');
+	function clickSquare(event) {
+            const squareid = event.target.id;
+            const gridlocation = parseInt(squareid.replace('sq', ''));
+            alert("gridlocation");
+            event.target.textContent = "X";
+        }
+	allsquares.forEach(square => {
+            square.addEventListener('click', clickSquare);
+        });
     </script>
 </head>
 
