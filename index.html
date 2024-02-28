@@ -1,25 +1,68 @@
-<!DOCTYPE html> 
-<html>  
-	<head> 
-		<meta charset = "utf-8"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="tttstyle.css">
-      		<title>ttt2</title> 
-   	</head> 
-	<body>
-      <h1>Welcome to Tic Tac Toe! </h1>
-	  	<div class="board"></div>
-        <script>
-            const NUM_SQUARES = 9;
-            let i = 0;
-            for (i; i < NUM_SQUARES; i++) {
-                let id = "sq" + i;
-                document.write("<div class='square' id='" + id + "'></div>");
-            }
-        </script>
-      <div class="turn">Someone's Turn </div>
-      <div class="win-condition">message goes here</div>
-    
-	</body>
-</html> 
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ttt2</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        div.board {
+            margin: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div.square {
+            border: 1px solid rgb(0, 0, 0);
+            margin: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+
+        div.square:hover {
+            background-color: rgb(255, 102, 102);
+        }
+
+        div.turn {
+            border: 3px solid #000;
+            width: 30%;
+            margin: auto;
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        div.win{
+            border: 3px solid #000;
+            width: 40%;
+            margin: auto;
+            padding: 10px;
+            text-align: center;
+        }
+
+    </style>
+    <script language = "javascript">
+        document.write("<h1>Welcome to Tic Tac Toe! </h1>");
+        document.write("<div class='turn'>Someone's Turn</div>");
+        document.write("<div class='win'>message goes here</div>");
+        
+        const NUM_SQUARES = 9;
+        for (i = 0; i < NUM_SQUARES; i++){
+            id = "sq" + i;
+            document.write("<div class = 'square' id = '" + id + "'></div>");
+        }
+        
+    </script>
+</head>
+
+<body>
+</body>
+</html>
