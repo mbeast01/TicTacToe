@@ -13,7 +13,8 @@
         div.board {
             margin: 5px;
             display: grid;
-         
+            grid-template-columns: repeat(3, 100px); 
+            grid-template-rows: repeat(3, 100px); 
         }
 
         div.square {
@@ -52,13 +53,13 @@
         document.write("<h1>Welcome to Tic Tac Toe! </h1>");
         document.write("<div class='turn'>Someone's Turn</div>");
         document.write("<div class='win'>message goes here</div>");
-        
+        document.write("<div class='board'>");
         const NUM_SQUARES = 9;
         for (i = 0; i < NUM_SQUARES; i++){
             id = "sq" + i;
             document.write("<div class = 'square' id = '" + id + "'></div>");
         }
-        
+        document.write("</div>");
     </script>
 </head>
 
