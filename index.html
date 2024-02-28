@@ -1,1 +1,25 @@
+<!DOCTYPE html> 
+<html>  
+	<head> 
+		<meta charset = "utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="tttstyle.css">
+      		<title>ttt2</title> 
+   	</head> 
+	<body>
+      <h1>Welcome to Tic Tac Toe! </h1>
+	  	<div class="board"></div>
+        <script>
+            const NUM_SQUARES = 9;
+            let i = 0;
+            for (i; i < NUM_SQUARES; i++) {
+                let id = "sq" + i;
+                document.write("<div class='square' id='" + id + "'></div>");
+            }
+        </script>
+      <div class="turn">Someone's Turn </div>
+      <div class="win-condition">message goes here</div>
+    
+	</body>
+</html> 
 
