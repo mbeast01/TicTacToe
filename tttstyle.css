@@ -7,3 +7,7 @@
     padding: 5px;
     width: 306px;  (3 * 100px) + (2 * 2px) */
 }
+
+.square {
+    border: 1px solid rgb(0, 0, 0);
+}
