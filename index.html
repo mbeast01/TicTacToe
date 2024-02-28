@@ -68,7 +68,7 @@
 	function clickSquare(event) {
             const squareid = event.target.id;
             const gridlocation = parseInt(squareid.replace('sq', ''));
-            alert("gridlocation");
+            alert(gridlocation);
             event.target.textContent = "X";
         }
 	allsquares.forEach(square => {
