@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ttt3</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        div.board {
+            width: 450px;
+	    height: 450px;
+	    margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 150px); 
+            grid-template-rows: repeat(3, 150px); 
+        }
+
+        div.square {
+            border: 1px solid rgb(0, 0, 0);
+	    margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+        }
+
+
+        div.square:hover {
+            background-color: rgb(255, 102, 102);
+        }
+
+        div.turn {
+            border: 3px solid #000;
+            width: 30%;
+            margin: auto;
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        div.win{
+            border: 3px solid #000;
+            width: 40%;
+            margin: auto;
+            padding: 10px;
+            text-align: center;
+        }
+
+    </style>
+    <script language = "javascript">
+        document.write("<h1>Welcome to Tic Tac Toe! </h1>");
+        document.write("<div class='turn'>Someone's Turn</div>");
+        document.write("<div class='win'>message goes here</div>");
+        document.write("<div class='board'>");
+        const NUM_SQUARES = 9;
+        for (i = 0; i < NUM_SQUARES; i++){
+            id = "sq" + i;
+            document.write("<div class = 'square' id = '" + id + "'>X</div>");
+        }
+        document.write("</div>");
+    </script>
+</head>
+
+<body>
+</body>
+</html>
