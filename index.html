@@ -52,7 +52,6 @@
 
     </style>
     <script language = "javascript">
-	let currplayer = 'X';
         document.write("<h1>Welcome to Tic Tac Toe! </h1>");
         document.write("<div class='turn'>" + currplayer + "'s Turn</div>");
         document.write("<div class='win'>message goes here</div>");
@@ -65,6 +64,7 @@
         document.write("</div>");
 
 	const allsquares = document.querySelectorAll('.square');
+	let currplayer = 'X';
 	function clickSquare(event) {
 		const squareid = event.target.id;
 		const square = document.getElementById(squareid);
@@ -75,7 +75,7 @@
 		alert(gridlocation);
 		event.target.textContent = currplayer;
 		currplayer = currplayer === 'X' && 'O' || 'X';
-		document.querySelector('.turn').textContent = currentPlayer + "'s Turn";
+		document.querySelector('.turn').textContent = currplayer + "'s Turn";
         }
 	allsquares.forEach(square => {
             square.addEventListener('click', clickSquare);
