@@ -63,16 +63,20 @@
 
     </style>
     <script language = "javascript">
-        document.write("<h1>Welcome to Tic Tac Toe! </h1>");
+        /* Set up a page */
+	document.write("<h1>Welcome to Tic Tac Toe! </h1>");
         document.write("<div class='turn'> X's Turn</div>");
-        document.write("<div class='win'>message goes here</div>");
+        document.write("<div class='win'>Game in Progress...</div>");
 	document.write("<div class='button'>");
 	document.write("<button id='reset'> Start Game </button>");
 	document.write("</div>");
         document.write("<div class='board'>");
-        const NUM_SQUARES = 9;
-	const continuegame = true;
+
+	/* Declare mega important vars */
+	const NUM_SQUARES = 9;
 	const winConditions = ["---","---","---","---","---","---","---","---"];
+	let currplayer;
+	
 	/* Declare the squares in the 3x3 grid */
         for (i = 0; i < NUM_SQUARES; i++){
             id = "sq" + i;
@@ -82,28 +86,31 @@
 	
 	/* sets allsquares to every square in grid, for accessing later */
 	const allsquares = document.querySelectorAll('.square');
+
+	/* initializes */
 	const moves = [];
         allsquares.forEach(square => {
             moves.push('-');
         });
+	
 	/*fxn defintion: updates the array */
 	function updatearray(){
 		allsquares.forEach(square => {
                 moves[parseInt(squareid.replace('sq', ''))] = square.innerText; 
         	});
 	}
-	let currplayer;
+	
 	/* generates a random player */
 	function randomfirstplayer() {
 		const randomIndex = Math.floor(Math.random() * 2);
-		if (randomIndex === 0) {
+		if (randomIndex == 0) {
                 	currplayer = 'X';
             	} else {
                 	currplayer = 'O';
             	}
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
 	}
-	randomfirstplayer();
+
 	function updatewinconditions(){
 		winConditions[0] = moves[0] + moves[1] + moves[2];
 		winConditions[1] = moves[3] + moves[4] + moves[5];
@@ -114,9 +121,10 @@
 		winConditions[6] = moves[0] + moves[4] + moves[8];
 		winConditions[7] = moves[2] + moves[4] + moves[6];
 	}
+	
 	function windetected(){
 		for (let i = 0; i < 8; i++) {
-			if (winConditions[i] === "XXX" || winConditions[i] === "OOO"){
+			if (winConditions[i] == "XXX" || winConditions[i] == "OOO"){
 				return true;
 			}
 		}
@@ -131,12 +139,14 @@
 	    allsquares.forEach(square => {
 		moves[parseInt(squareid.replace('sq', ''))] = '-'; 
 	    });
+	    document.querySelector('.win').innerText ="Game in Progress...";
             randomfirstplayer(); 
         }
+
 	
 	/* fxn defintion: switches players turn */
 	function changeplayer(){
-		if (currplayer === 'X') {
+		if (currplayer == 'X') {
                 	currplayer = 'O';
             	} else {
                 	currplayer = 'X';
@@ -146,12 +156,14 @@
 	/* fxn defintion: detects a stalemate */
 	function stalematedetected(){
 		for(let j = 0; j < 9; j++){
-			if (moves[j] === '-'){
+			if (moves[j] == '-'){
 				return false;
 			}
 		}
 		return true;
 	}
+	
+	randomfirstplayer();
         document.getElementById('reset').addEventListener('click', resetboard);
 	/* fxn defintion: handles the event of a square being clicked, updates moves array, changes the turn and detects wins */
 	function clickasquare(event) {
@@ -159,7 +171,7 @@
 		const square = document.getElementById(squareid);
 		const gridlocation = parseInt(squareid.replace('sq', ''));
 		/* checks if a box already has something in it, returns function if it does so it doesn't get written over */
-		if (square.innerText === 'X' || square.innerText === 'O') {
+		if (square.innerText == 'X' || square.innerText == 'O') {
         		return; 
     		}
 		alert(gridlocation);
@@ -171,6 +183,13 @@
 		updatewinconditions();
 		let win = windetected();
 		let stalemate = stalematedetected();
+		if ( win == true ) {
+			document.querySelector('.win').innerText = currplayer + " WON! Congrats!";
+			resetboard();
+		} else if (stalemate == true){
+			document.querySelector('.win').innerText = "Stalemate! Better luck next time!";
+			resetboard();
+		}
         }
 	
 	allsquares.forEach(square => {
