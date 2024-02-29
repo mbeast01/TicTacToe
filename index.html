@@ -111,7 +111,6 @@
             });
 	    moves = [];
 	    randomfirstplayer(); 
-	    document.querySelector('.win').innerText ="Game in Progress...";
         }
 	
 	/* fxn defintion: switches players turn */
@@ -174,8 +173,10 @@
 		var stalemate = stalematedetected();
 		if ( win ) {
 			document.querySelector('.win').innerText = currplayer + " WON! Congrats!";
+			resetboard();
 		} else if (stalemate) {
 			document.querySelector('.win').innerText = "Stalemate! Better luck next time!";
+			resetboard();
 		} 
 		changeplayer();
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
