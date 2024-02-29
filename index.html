@@ -103,13 +103,13 @@
 	}
 
 	
-	
 	/* fxn defintion: resets the 3x3 for a new grid */
 	function resetboard() {
             allsquares.forEach(square => {
                 square.innerText = ''; 
             });
 	    moves = [];
+	    winConditions = [];
 	    randomfirstplayer(); 
         }
 	
@@ -171,13 +171,14 @@
 		}
 		
 		var stalemate = stalematedetected();
+		var gameover = false;
 		if ( win ) {
 			document.querySelector('.win').innerText = currplayer + " WON! Congrats!";
-			resetboard();
+
 		} else if (stalemate) {
 			document.querySelector('.win').innerText = "Stalemate! Better luck next time!";
-			resetboard();
 		} 
+		winConditions[];
 		changeplayer();
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
         }
