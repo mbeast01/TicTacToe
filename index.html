@@ -129,16 +129,6 @@
             	}
 	}
 
-	/* fxn defintion: detects a stalemate */
-	function stalematedetected(){
-		for(let j = 0; j < 9; j++){
-			if (moves[j] == '-'){
-				return false;
-			}
-		}
-		return true;
-	}
-	
 	randomfirstplayer();
         document.getElementById('reset').addEventListener('click', resetboard);
 
@@ -180,8 +170,14 @@
 				win = true;
 			}
 		}
+
+		stalemate = true;
+		for(let j = 0; j < 9; j++){
+			if (moves[j] == '-'){
+				stalemate = false;
+			} 
+		}
 		
-		stalemate = stalematedetected();
 		if ( win ) {
 			document.querySelector('.win').innerText = currplayer + " WON! Congrats!";
 			gameover = true;
