@@ -78,6 +78,11 @@
         document.write("</div>");
 
 	const allsquares = document.querySelectorAll('.square');
+	const moves = [];
+        allsquares.forEach(square => {
+            moves.push('-');
+        });
+	
 	let currplayer;
 	function randomfirstplayer() {
 		const randomIndex = Math.floor(Math.random() * 2);
@@ -86,13 +91,13 @@
             	} else {
                 	currplayer = 'O';
             	}
-            	document.querySelector('.turn').textContent = currplayer + "'s Turn";
+            	document.querySelector('.turn').innerText = currplayer + "'s Turn";
 	}
 	randomfirstplayer();
 
 	function resetboard() {
             allsquares.forEach(square => {
-                square.textContent = ''; 
+                square.innerText = ''; 
             });
             randomfirstplayer(); 
         }
@@ -103,18 +108,18 @@
 		const squareid = event.target.id;
 		const square = document.getElementById(squareid);
 		const gridlocation = parseInt(squareid.replace('sq', ''));
-		if (square.textContent === 'X' || square.textContent === 'O') {
+		if (square.innerText === 'X' || square.innerText === 'O') {
         		return; 
     		}
 		alert(gridlocation);
-		event.target.textContent = currplayer;
+		event.target.innerText = currplayer;
 		
 		if (currplayer === 'X') {
                 	currplayer = 'O';
             	} else {
                 	currplayer = 'X';
             	}
-            	document.querySelector('.turn').textContent = currplayer + "'s Turn";
+            	document.querySelector('.turn').innerText = currplayer + "'s Turn";
         }
 	
 	allsquares.forEach(square => {
