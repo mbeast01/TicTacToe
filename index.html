@@ -71,24 +71,27 @@
 	document.write("</div>");
         document.write("<div class='board'>");
         const NUM_SQUARES = 9;
+	/* Declare the squares in the 3x3 grid */
         for (i = 0; i < NUM_SQUARES; i++){
             id = "sq" + i;
             document.write("<div class = 'square' id = '" + id + "'></div>");
         }
         document.write("</div>");
-
+	
+	/* sets allsquares to every square in grid, for accessing later */
 	const allsquares = document.querySelectorAll('.square');
 	const moves = [];
         allsquares.forEach(square => {
             moves.push('-');
         });
+	/* fxn defintion: updates the array */
 	function updatearray{
-            	allsquares.forEach((square, NUM_SQUARES) => {
-                moves[inde] = square.innerText; 
+                moves[parseInt(squareid.replace('sq', ''))] = square.innerText; 
         	});
 		console.log(moves);
 	}
 	let currplayer;
+	/* generates a random player */
 	function randomfirstplayer() {
 		const randomIndex = Math.floor(Math.random() * 2);
 		if (randomIndex === 0) {
@@ -99,7 +102,7 @@
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
 	}
 	randomfirstplayer();
-
+	/* fxn defintion: resets the 3x3 for a new grid */
 	function resetboard() {
             allsquares.forEach(square => {
                 square.innerText = ''; 
@@ -107,23 +110,29 @@
             randomfirstplayer(); 
         }
 
-        document.getElementById('reset').addEventListener('click', resetboard);
-
-	function clickasquare(event) {
-		const squareid = event.target.id;
-		const square = document.getElementById(squareid);
-		const gridlocation = parseInt(squareid.replace('sq', ''));
-		if (square.innerText === 'X' || square.innerText === 'O') {
-        		return; 
-    		}
-		alert(gridlocation);
-		event.target.innerText = currplayer;
-		updatearray();
+	/* fxn defintion: switches players turn */
+	function changeplayer(){
 		if (currplayer === 'X') {
                 	currplayer = 'O';
             	} else {
                 	currplayer = 'X';
             	}
+	}
+        document.getElementById('reset').addEventListener('click', resetboard);
+	/* fxn defintion: handles the event of a square being clicked, updates moves array, changes the turn and detects wins */
+	function clickasquare(event) {
+		const squareid = event.target.id;
+		const square = document.getElementById(squareid);
+		const gridlocation = parseInt(squareid.replace('sq', ''));
+		/* checks if a box already has something in it, returns function if it does so it doesn't get written over */
+		if (square.innerText === 'X' || square.innerText === 'O') {
+        		return; 
+    		}
+		alert(gridlocation);
+		/* updates the box with the currplayers mark */
+		event.target.innerText = currplayer;
+		updatearray();
+		changeplayer();
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
         }
 	
