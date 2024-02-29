@@ -134,12 +134,11 @@
                 square.innerText = ''; 
             });
 	    allsquares.forEach(square => {
-		moves[parseInt(squareid.replace('sq', ''))] = '-'; 
+		moves[parseInt(square.replace('sq', ''))] = '-'; 
 	    });
 	    randomfirstplayer(); 
 	    document.querySelector('.win').innerText ="Game in Progress...";
         }
-
 	
 	/* fxn defintion: switches players turn */
 	function changeplayer(){
