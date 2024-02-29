@@ -171,7 +171,7 @@
 		if (square.innerText == 'X' || square.innerText == 'O') {
         		return; 
     		}
-		alert(gridlocation);
+		
 		/* updates the box with the currplayers mark */
 		event.target.innerText = currplayer;
 		
@@ -179,7 +179,7 @@
 		allsquares.forEach(square => {
                 moves[parseInt(squareid.replace('sq', ''))] = square.innerText; 
         	});
-		
+		console.log(moves);
 		/*updatewinConditions();*/
 		winConditions[0] = moves[0] + moves[1] + moves[2];
 		winConditions[1] = moves[3] + moves[4] + moves[5];
@@ -189,18 +189,19 @@
 		winConditions[5] = moves[2] + moves[5] + moves[8];
 		winConditions[6] = moves[0] + moves[4] + moves[8];
 		winConditions[7] = moves[2] + moves[4] + moves[6];
+		console.log(winConditions);
 		
 		var win = false;
 		for (let i = 0; i < 8; i++) {
-			if (winConditions[i] == "XXX" || winConditions[i] == "OOO"){
+			if ((winConditions[i] == "XXX") || (winConditions[i] == "OOO")){
 				win = true;
 			}
 		}
 		
 		var stalemate = stalematedetected();
-		if ( win == true ) {
+		if ( win ) {
 			document.querySelector('.win').innerText = currplayer + " WON! Congrats!";
-		} else if (stalemate == true){
+		} else if (stalemate) {
 			document.querySelector('.win').innerText = "Stalemate! Better luck next time!";
 		} 
 		changeplayer();
