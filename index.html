@@ -74,7 +74,7 @@
 
 	/* Declare mega important vars */
 	const NUM_SQUARES = 9;
-	const winConditions = ["---","---","---","---","---","---","---","---"];
+	let winConditions = ["---","---","---","---","---","---","---","---"];
 	let currplayer;
 	
 	/* Declare the squares in the 3x3 grid */
@@ -88,7 +88,7 @@
 	const allsquares = document.querySelectorAll('.square');
 
 	/* initializes */
-	const moves = ['-','-','-','-','-','-','-','-','-'];
+	let moves = ['-','-','-','-','-','-','-','-','-'];
 	
 	/*fxn defintion: updates the array */
 	function updatearray(){
@@ -108,7 +108,7 @@
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
 	}
 
-	function updatewinconditions(){
+	function updatewinConditions(){
 		winConditions[0] = moves[0] + moves[1] + moves[2];
 		winConditions[1] = moves[3] + moves[4] + moves[5];
 		winConditions[2] = moves[6] + moves[7] + moves[8];
@@ -180,7 +180,7 @@
                 moves[parseInt(squareid.replace('sq', ''))] = square.innerText; 
         	});
 		
-		/*updatewinconditions();*/
+		/*updatewinConditions();*/
 		winConditions[0] = moves[0] + moves[1] + moves[2];
 		winConditions[1] = moves[3] + moves[4] + moves[5];
 		winConditions[2] = moves[6] + moves[7] + moves[8];
@@ -196,6 +196,7 @@
 				win = true;
 			}
 		}
+		
 		var stalemate = stalematedetected();
 		if ( win == true ) {
 			document.querySelector('.win').innerText = currplayer + " WON! Congrats!";
