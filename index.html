@@ -148,8 +148,12 @@
 		const square = document.getElementById(squareid);
 		const gridlocation = parseInt(squareid.replace('sq', ''));
 		/* checks if a box already has something in it, returns function if it does so it doesn't get written over */
-		if (square.innerText == 'X' || square.innerText == 'O' || gameover == true) {
-        		return; 
+		if (gameover){
+			resetboard();
+			return;
+		}
+		if (square.innerText == 'X' || square.innerText == 'O') {
+			return; 
     		}
 		
 		/* updates the box with the currplayers mark */
@@ -186,7 +190,6 @@
 		} else if (stalemate) {
 			document.querySelector('.win').innerText = "Stalemate! Better luck next time!";
 			gameover = true;
-			stalemate = false;
 			return;
 		} 
 		winConditions = ["---","---","---","---","---","---","---","---"];
