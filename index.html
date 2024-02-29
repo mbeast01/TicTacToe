@@ -65,11 +65,12 @@
         document.write("</div>");
 
 	const allsquares = document.querySelectorAll('.square');
-	let currplayer = 
+	let currplayer = 'X';
 	function clickSquare(event) {
 		const squareid = event.target.id;
+		const square = document.getElementById(squareid);
 		const gridlocation = parseInt(squareid.replace('sq', ''));
-		if (document.getElementById(squareid).textContent === 'X' || document.getElementById(squareid).textContent === 'O') {
+		if (square.textContent === 'X' || square.textContent === 'O') {
         		return; 
     		}
 		alert(gridlocation);
