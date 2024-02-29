@@ -68,11 +68,11 @@
 	function randomfirstplayer() {
 		const randomIndex = Math.floor(Math.random() * 2);
 		if (randomIndex === 0) {
-                	currentPlayer = 'X';
+                	currplayer = 'X';
             	} else {
-                	currentPlayer = 'O';
+                	currplayer = 'O';
             	}
-            	document.querySelector('.turn').textContent = currentPlayer + "'s Turn";
+            	document.querySelector('.turn').textContent = currplayer + "'s Turn";
 	}
 	randomfirstplayer();
 	    
