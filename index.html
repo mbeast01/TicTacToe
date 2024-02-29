@@ -181,6 +181,7 @@
 		} else if (stalemate) {
 			document.querySelector('.win').innerText = "Stalemate! Better luck next time!";
 			gameover = true;
+			stalemate = false;
 			return;
 		} 
 		winConditions = ["---","---","---","---","---","---","---","---"];
