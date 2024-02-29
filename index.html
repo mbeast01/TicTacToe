@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ttt4</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        div.board {
+            width: 450px;
+	    height: 450px;
+	    margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 150px); 
+            grid-template-rows: repeat(3, 150px); 
+        }
+
+        div.square {
+            border: 1px solid rgb(0, 0, 0);
+	    margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+        }
+
+
+        div.square:hover {
+            background-color: rgb(255, 102, 102);
+        }
+
+        div.turn {
+            border: 3px solid #000;
+            width: 30%;
+            margin: auto;
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        div.win{
+            border: 3px solid #000;
+            width: 40%;
+            margin: auto;
+            padding: 10px;
+            text-align: center;
+        }
+	div.button{
+            width: 10%;
+            margin: auto;
+            padding: 10px;
+            text-align: center;
+	}
+
+	button:hover {
+		background-color: rgb(210, 102, 238);
+	}
+
+
+    </style>
+    <script language = "javascript">
+        document.write("<h1>Welcome to Tic Tac Toe! </h1>");
+        document.write("<div class='turn'> X's Turn</div>");
+        document.write("<div class='win'>message goes here</div>");
+	document.write("<div class='button'>");
+	document.write("<button id='reset'> Start Game </button>");
+	document.write("</div>");
+        document.write("<div class='board'>");
+        const NUM_SQUARES = 9;
+        for (i = 0; i < NUM_SQUARES; i++){
+            id = "sq" + i;
+            document.write("<div class = 'square' id = '" + id + "'></div>");
+        }
+        document.write("</div>");
+
+	const allsquares = document.querySelectorAll('.square');
+	let currplayer;
+	function randomfirstplayer() {
+		const randomIndex = Math.floor(Math.random() * 2);
+		if (randomIndex === 0) {
+                	currplayer = 'X';
+            	} else {
+                	currplayer = 'O';
+            	}
+            	document.querySelector('.turn').textContent = currplayer + "'s Turn";
+	}
+	randomfirstplayer();
+
+	function resetboard() {
+            allsquares.forEach(square => {
+                square.textContent = ''; 
+            });
+            randomfirstplayer(); 
+        }
+
+        document.getElementById('reset').addEventListener('click', resetboard);
+
+	function clickasquare(event) {
+		const squareid = event.target.id;
+		const square = document.getElementById(squareid);
+		const gridlocation = parseInt(squareid.replace('sq', ''));
+		if (square.textContent === 'X' || square.textContent === 'O') {
+        		return; 
+    		}
+		alert(gridlocation);
+		event.target.textContent = currplayer;
+		
+		if (currplayer === 'X') {
+                	currplayer = 'O';
+            	} else {
+                	currplayer = 'X';
+            	}
+            	document.querySelector('.turn').textContent = currplayer + "'s Turn";
+        }
+	
+	allsquares.forEach(square => {
+            square.addEventListener('click', clickasquare);
+        });
+    </script>
+</head>
+
+<body>
+</body>
+</html>
