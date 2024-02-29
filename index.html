@@ -54,22 +54,29 @@
     <script language = "javascript">
 
         document.write("<h1>Welcome to Tic Tac Toe! </h1>");
-        document.write("<div class='turn'>Someone's Turn</div>");
+        document.write("<div class='turn'>X's Turn</div>");
         document.write("<div class='win'>message goes here</div>");
         document.write("<div class='board'>");
         const NUM_SQUARES = 9;
         for (i = 0; i < NUM_SQUARES; i++){
             id = "sq" + i;
-            document.write("<div class = 'square' id = '" + id + "'>X</div>");
+            document.write("<div class = 'square' id = '" + id + "'></div>");
         }
         document.write("</div>");
 
 	const allsquares = document.querySelectorAll('.square');
+	let currplayer = 
 	function clickSquare(event) {
-            const squareid = event.target.id;
-            const gridlocation = parseInt(squareid.replace('sq', ''));
-            alert(gridlocation);
-            event.target.textContent = "X";
+		const squareid = event.target.id;
+		const square = document.getElementById(squareid);
+		const gridlocation = parseInt(squareid.replace('sq', ''));
+		if (square.textContent === 'X' || square.textContent === 'O') {
+        		return; 
+    		}
+		alert(gridlocation);
+		event.target.textContent = currplayer;
+		currplayer = currplayer === 'X' && 'O' || 'X';
+		document.querySelector('.turn').textContent = currentPlayer + "'s Turn";
         }
 	allsquares.forEach(square => {
             square.addEventListener('click', clickSquare);
