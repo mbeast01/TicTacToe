@@ -139,8 +139,8 @@
 	    allsquares.forEach(square => {
 		moves[parseInt(squareid.replace('sq', ''))] = '-'; 
 	    });
+	    randomfirstplayer(); 
 	    document.querySelector('.win').innerText ="Game in Progress...";
-            randomfirstplayer(); 
         }
 
 	
@@ -177,8 +177,6 @@
 		alert(gridlocation);
 		/* updates the box with the currplayers mark */
 		event.target.innerText = currplayer;
-		changeplayer();
-            	document.querySelector('.turn').innerText = currplayer + "'s Turn";
 		updatearray();
 		updatewinconditions();
 		let win = windetected();
@@ -190,6 +188,8 @@
 			document.querySelector('.win').innerText = "Stalemate! Better luck next time!";
 			resetboard();
 		}
+		changeplayer();
+            	document.querySelector('.turn').innerText = currplayer + "'s Turn";
         }
 	
 	allsquares.forEach(square => {
