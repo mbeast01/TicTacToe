@@ -52,10 +52,9 @@
 	#reset {
     	    padding: 10px
 	    text-align: center;
-	    text-decoration: none;
 	    display: inline-block;
 	    font-size: 16px;
-	    margin: 4px 2px;
+	    margin: auto;
 	}
 	#reset:hover {
 		background-color: rgb(210, 102, 238);
@@ -67,8 +66,8 @@
         document.write("<h1>Welcome to Tic Tac Toe! </h1>");
         document.write("<div class='turn'> X's Turn</div>");
         document.write("<div class='win'>message goes here</div>");
-        document.write("<div class='board'>");
 	document.write("<button id='reset'> Start Game </button>");
+        document.write("<div class='board'>");
         const NUM_SQUARES = 9;
         for (i = 0; i < NUM_SQUARES; i++){
             id = "sq" + i;
