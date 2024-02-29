@@ -134,6 +134,7 @@
 	
 	randomfirstplayer();
         document.getElementById('reset').addEventListener('click', resetboard);
+
 	/* fxn defintion: handles the event of a square being clicked, updates moves array, changes the turn and detects wins */
 	function clickasquare(event) {
 		var gameover = false;
@@ -182,7 +183,7 @@
 			gameover = true;
 			return;
 		} 
-		winConditions[];
+		winConditions = ["---","---","---","---","---","---","---","---"];
 		changeplayer();
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
         }
