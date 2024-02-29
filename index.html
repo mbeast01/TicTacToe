@@ -71,7 +71,8 @@
 	document.write("</div>");
         document.write("<div class='board'>");
         const NUM_SQUARES = 9;
-	const winConditions = ["XXX", "Volvo", "BMW"
+	const continuegame = true;
+	const winConditions = ["---","---","---","---","---","---","---","---"];
 	/* Declare the squares in the 3x3 grid */
         for (i = 0; i < NUM_SQUARES; i++){
             id = "sq" + i;
@@ -103,6 +104,25 @@
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
 	}
 	randomfirstplayer();
+	function updatewinconditions(){
+		winConditions[0] = moves[0] + moves[1] + moves[2];
+		winConditions[1] = moves[3] + moves[4] + moves[5];
+		winConditions[2] = moves[6] + moves[7] + moves[8];
+		winConditions[3] = moves[0] + moves[3] + moves[6];
+		winConditions[4] = moves[1] + moves[4] + moves[7];
+		winConditions[5] = moves[2] + moves[5] + moves[8];
+		winConditions[6] = moves[0] + moves[4] + moves[8];
+		winConditions[7] = moves[2] + moves[4] + moves[6];
+	}
+	function windetected(){
+		for (let i = 0; i < 8; i++) {
+			if (winConditions[i] === "XXX" || winConditions[i] === "OOO"){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	/* fxn defintion: resets the 3x3 for a new grid */
 	function resetboard() {
             allsquares.forEach(square => {
@@ -113,7 +133,7 @@
 	    });
             randomfirstplayer(); 
         }
-
+	
 	/* fxn defintion: switches players turn */
 	function changeplayer(){
 		if (currplayer === 'X') {
@@ -121,6 +141,16 @@
             	} else {
                 	currplayer = 'X';
             	}
+	}
+
+	/* fxn defintion: detects a stalemate */
+	function stalematedetected(){
+		for(let j = 0; j < 9; j++){
+			if (moves[j] === '-'){
+				return false;
+			}
+		}
+		return true;
 	}
         document.getElementById('reset').addEventListener('click', resetboard);
 	/* fxn defintion: handles the event of a square being clicked, updates moves array, changes the turn and detects wins */
@@ -138,6 +168,9 @@
 		changeplayer();
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
 		updatearray();
+		updatewinconditions();
+		let win = windetected();
+		let stalemate = stalematedetected();
         }
 	
 	allsquares.forEach(square => {
