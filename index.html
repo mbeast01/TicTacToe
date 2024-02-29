@@ -64,8 +64,19 @@
         document.write("</div>");
 
 	const allsquares = document.querySelectorAll('.square');
-	let currplayer = 'X';
-	function clickSquare(event) {
+	let currplayer;
+	function randomfirstplayer() {
+		const randomIndex = Math.floor(Math.random() * 2);
+		if (randomIndex === 0) {
+                	currentPlayer = 'X';
+            	} else {
+                	currentPlayer = 'O';
+            	}
+            	document.querySelector('.turn').textContent = currentPlayer + "'s Turn";
+	}
+	randomfirstplayer();
+	    
+	function clickasquare(event) {
 		const squareid = event.target.id;
 		const square = document.getElementById(squareid);
 		const gridlocation = parseInt(squareid.replace('sq', ''));
@@ -73,12 +84,18 @@
         		return; 
     		}
 		alert(gridlocation);
-		event.target.textContent = currplayer;
-		currplayer = currplayer === 'X' && 'O' || 'X';
-		document.querySelector('.turn').textContent = currplayer + "'s Turn";
+		square.textContent = currplayer;
+		
+		if (currentPlayer === 'X') {
+                	currentPlayer = 'O';
+            	} else {
+                	currentPlayer = 'X';
+            	}
+            	document.querySelector('.turn').textContent = currentPlayer + "'s Turn";
         }
+	
 	allsquares.forEach(square => {
-            square.addEventListener('click', clickSquare);
+            square.addEventListener('click', clickasquare);
         });
     </script>
 </head>
