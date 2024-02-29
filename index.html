@@ -177,6 +177,7 @@
 		alert(gridlocation);
 		/* updates the box with the currplayers mark */
 		event.target.innerText = currplayer;
+		
 		updatearray();
 		updatewinconditions();
 		let win = windetected();
@@ -187,9 +188,10 @@
 		} else if (stalemate == true){
 			document.querySelector('.win').innerText = "Stalemate! Better luck next time!";
 			resetboard();
+		} else {
+			changeplayer();
+            		document.querySelector('.turn').innerText = currplayer + "'s Turn";
 		}
-		changeplayer();
-            	document.querySelector('.turn').innerText = currplayer + "'s Turn";
         }
 	
 	allsquares.forEach(square => {
