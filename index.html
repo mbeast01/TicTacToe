@@ -56,6 +56,7 @@
         document.write("<div class='turn'> X's Turn</div>");
         document.write("<div class='win'>message goes here</div>");
         document.write("<div class='board'>");
+	document.write("<button id='reset'>"+ Start Game+"</button>");
         const NUM_SQUARES = 9;
         for (i = 0; i < NUM_SQUARES; i++){
             id = "sq" + i;
@@ -75,7 +76,16 @@
             	document.querySelector('.turn').textContent = currplayer + "'s Turn";
 	}
 	randomfirstplayer();
-	    
+
+	function resetboard() {
+            allsquares.forEach(square => {
+                square.textContent = ''; 
+            });
+            randomfirstplayer(); 
+        }
+
+        document.getElementById('reset').addEventListener('click', resetboard);
+
 	function clickasquare(event) {
 		const squareid = event.target.id;
 		const square = document.getElementById(squareid);
@@ -86,12 +96,12 @@
 		alert(gridlocation);
 		event.target.textContent = currplayer;
 		
-		if (currentPlayer === 'X') {
-                	currentPlayer = 'O';
+		if (currplayer === 'X') {
+                	currplayer = 'O';
             	} else {
-                	currentPlayer = 'X';
+                	currplayer = 'X';
             	}
-            	document.querySelector('.turn').textContent = currentPlayer + "'s Turn";
+            	document.querySelector('.turn').textContent = currplayer + "'s Turn";
         }
 	
 	allsquares.forEach(square => {
