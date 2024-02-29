@@ -106,6 +106,7 @@
 	function resetboard() {
             allsquares.forEach(square => {
                 square.innerText = ''; 
+		moves[parseInt(squareid.replace('sq', ''))] = '-'; 
             });
             randomfirstplayer(); 
         }
