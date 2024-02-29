@@ -76,6 +76,7 @@
 	const NUM_SQUARES = 9;
 	let winConditions = ["---","---","---","---","---","---","---","---"];
 	let currplayer;
+	var gameover = false;
 	
 	/* Declare the squares in the 3x3 grid */
         for (i = 0; i < NUM_SQUARES; i++){
@@ -137,7 +138,6 @@
 
 	/* fxn defintion: handles the event of a square being clicked, updates moves array, changes the turn and detects wins */
 	function clickasquare(event) {
-		var gameover = false;
 		const squareid = event.target.id;
 		const square = document.getElementById(squareid);
 		const gridlocation = parseInt(squareid.replace('sq', ''));
