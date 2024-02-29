@@ -136,11 +136,12 @@
         document.getElementById('reset').addEventListener('click', resetboard);
 	/* fxn defintion: handles the event of a square being clicked, updates moves array, changes the turn and detects wins */
 	function clickasquare(event) {
+		var gameover = false;
 		const squareid = event.target.id;
 		const square = document.getElementById(squareid);
 		const gridlocation = parseInt(squareid.replace('sq', ''));
 		/* checks if a box already has something in it, returns function if it does so it doesn't get written over */
-		if (square.innerText == 'X' || square.innerText == 'O') {
+		if (square.innerText == 'X' || square.innerText == 'O' || gameover == true) {
         		return; 
     		}
 		
@@ -171,12 +172,15 @@
 		}
 		
 		var stalemate = stalematedetected();
-		var gameover = false;
 		if ( win ) {
 			document.querySelector('.win').innerText = currplayer + " WON! Congrats!";
+			gameover = true;
+			return;
 
 		} else if (stalemate) {
 			document.querySelector('.win').innerText = "Stalemate! Better luck next time!";
+			gameover = true;
+			return;
 		} 
 		winConditions[];
 		changeplayer();
