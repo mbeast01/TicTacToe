@@ -68,9 +68,8 @@
 	let currplayer = 
 	function clickSquare(event) {
 		const squareid = event.target.id;
-		const square = document.getElementById(squareid);
 		const gridlocation = parseInt(squareid.replace('sq', ''));
-		if (square.textContent === 'X' || square.textContent === 'O') {
+		if (document.getElementById(squareid).textContent === 'X' || document.getElementById(squareid).textContent === 'O') {
         		return; 
     		}
 		alert(gridlocation);
