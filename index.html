@@ -110,7 +110,9 @@
                 square.innerText = ''; 
             });
 	    moves = [];
-	    winConditions = [];
+	    winConditions = ["---","---","---","---","---","---","---","---"];
+	    gameover = false;
+	    document.querySelector('.win').innerText = "Game in Progress...";
 	    randomfirstplayer(); 
         }
 	
