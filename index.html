@@ -131,9 +131,9 @@
 		alert(gridlocation);
 		/* updates the box with the currplayers mark */
 		event.target.innerText = currplayer;
-		updatearray();
 		changeplayer();
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
+		updatearray();
         }
 	
 	allsquares.forEach(square => {
