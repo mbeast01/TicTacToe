@@ -71,6 +71,7 @@
 	document.write("</div>");
         document.write("<div class='board'>");
         const NUM_SQUARES = 9;
+	const winConditions = ["XXX", "Volvo", "BMW"
 	/* Declare the squares in the 3x3 grid */
         for (i = 0; i < NUM_SQUARES; i++){
             id = "sq" + i;
@@ -106,8 +107,10 @@
 	function resetboard() {
             allsquares.forEach(square => {
                 square.innerText = ''; 
-		moves[parseInt(squareid.replace('sq', ''))] = '-'; 
             });
+	    allsquares.forEach(square => {
+		moves[parseInt(squareid.replace('sq', ''))] = '-'; 
+	    });
             randomfirstplayer(); 
         }
 
