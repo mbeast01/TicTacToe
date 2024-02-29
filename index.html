@@ -77,6 +77,8 @@
 	let winConditions = ["---","---","---","---","---","---","---","---"];
 	let currplayer;
 	var gameover = false;
+	var win = false;
+	var stalemate = false;
 	
 	/* Declare the squares in the 3x3 grid */
         for (i = 0; i < NUM_SQUARES; i++){
@@ -112,6 +114,8 @@
 	    moves = [];
 	    winConditions = ["---","---","---","---","---","---","---","---"];
 	    gameover = false;
+	    stalemate = false;
+	    win = false;
 	    document.querySelector('.win').innerText = "Game in Progress...";
 	    randomfirstplayer(); 
         }
@@ -167,14 +171,13 @@
 		winConditions[7] = moves[2] + moves[4] + moves[6];
 		console.log(winConditions);
 		
-		var win = false;
 		for (let i = 0; i < 8; i++) {
 			if ((winConditions[i] == "XXX") || (winConditions[i] == "OOO")){
 				win = true;
 			}
 		}
 		
-		var stalemate = stalematedetected();
+		stalemate = stalematedetected();
 		if ( win ) {
 			document.querySelector('.win').innerText = currplayer + " WON! Congrats!";
 			gameover = true;
