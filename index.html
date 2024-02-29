@@ -80,16 +80,16 @@
 	
 	/* sets allsquares to every square in grid, for accessing later */
 	const allsquares = document.querySelectorAll('.square');
-	const moves = [];
+	/*const moves = [];
         allsquares.forEach(square => {
             moves.push('-');
         });
-	/* fxn defintion: updates the array */
+	/* fxn defintion: updates the array 
 	function updatearray{
                 moves[parseInt(squareid.replace('sq', ''))] = square.innerText; 
         	});
 		console.log(moves);
-	}
+	}*/
 	let currplayer;
 	/* generates a random player */
 	function randomfirstplayer() {
@@ -131,7 +131,7 @@
 		alert(gridlocation);
 		/* updates the box with the currplayers mark */
 		event.target.innerText = currplayer;
-		updatearray();
+		/*updatearray();*/
 		changeplayer();
             	document.querySelector('.turn').innerText = currplayer + "'s Turn";
         }
