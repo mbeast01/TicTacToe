@@ -82,7 +82,13 @@
         allsquares.forEach(square => {
             moves.push('-');
         });
-	
+	function updatearray{
+            	allsquares.forEach((square, index) => {
+                const xo = square.innerText; 
+                moves[index] = xo; 
+        	});
+		console.log(moves);
+	}
 	let currplayer;
 	function randomfirstplayer() {
 		const randomIndex = Math.floor(Math.random() * 2);
@@ -113,7 +119,7 @@
     		}
 		alert(gridlocation);
 		event.target.innerText = currplayer;
-		
+		updatearray();
 		if (currplayer === 'X') {
                 	currplayer = 'O';
             	} else {
