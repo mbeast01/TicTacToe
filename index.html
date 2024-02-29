@@ -200,14 +200,11 @@
 		var stalemate = stalematedetected();
 		if ( win == true ) {
 			document.querySelector('.win').innerText = currplayer + " WON! Congrats!";
-			/*resetboard();*/
 		} else if (stalemate == true){
 			document.querySelector('.win').innerText = "Stalemate! Better luck next time!";
-			/*resetboard();*/
-		} else {
-			changeplayer();
-            		document.querySelector('.turn').innerText = currplayer + "'s Turn";
-		}
+		} 
+		changeplayer();
+            	document.querySelector('.turn').innerText = currplayer + "'s Turn";
         }
 	
 	allsquares.forEach(square => {
